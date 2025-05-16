@@ -1,5 +1,9 @@
+<?php
+    $conexao = mysqli_connect("localhost", "root", "Fukuoka23.", "ayuru") or die("Falha na conexão");
+    $tabela =  mysqli_query($conexao, "SELECT * FROM especies");
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +62,46 @@
     </nav>
     <main>
         <h1>Espécies</h1>
+        <div id="botoes" style="margin-top: 0; margin-bottom: 1rem;">
+            <a href="#fauna" style="color: #F0F7DA; background-color: #325D2F; text-decoration: none; border-radius: 10px; padding: 7px 12px;">Fauna</a>
+            <a href="#flora" style="color: #F0F7DA; background-color: #325D2F; text-decoration: none; border-radius: 10px; padding: 7px 12px;">Flora</a>
+        </div>
+        <section id="fauna">
+            <?php
+                while ($linha = mysqli_fetch_array($tabela, MYSQLI_ASSOC)) {
+                    if ($linha['tipo'] == 'fauna') {
+            ?>
+                <div class='<?php echo $linha['tipo']?>' style="background-color: #325D2F; padding: 1rem; color: #F0F7DA; margin-bottom: 1rem;">
+                    <img src="<?php echo $linha["foto"];?>" style="width: 100%;">
+                    <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["familia"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["classe"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["data"]." ".$linha["horario"]?></p>
+                    <p style="margin: 0;">Encontrado em: <?php echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]?></p>
+                    <p style="margin: 0;"><?php echo $linha["descricao"];?></p>
+                </div>
+            <?php
+                    }
+            ?>
+        </section>
+        <section id="flora">
+            <?php
+                    if ($linha['tipo'] == 'flora') {
+            ?>
+                <div class='<?php echo $linha['tipo']?>' style="background-color: #325D2F; padding: 1rem; color: #F0F7DA; margin-bottom: 1rem;">
+                    <img src="<?php echo $linha["foto"];?>" style="width: 100%;">
+                    <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["familia"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["classe"];?></p>
+                    <p style="margin: 0;"><?php echo $linha["data"]." ".$linha["horario"]?></p>
+                    <p style="margin: 0;">Encontrado em: <?php echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]?></p>
+                    <p style="margin: 0;"><?php echo $linha["descricao"];?></p>
+                </div>
+            <?php
+                    }
+                }
+            ?>
+        </section>
     </main>
 </body>
 </html>
