@@ -76,9 +76,7 @@
                     <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
                     <p style="margin: 0;"><?php echo $linha["familia"];?></p>
                     <p style="margin: 0;"><?php echo $linha["classe"];?></p>
-                    <p style="margin: 0;"><?php echo $linha["data"]." ".$linha["horario"]?></p>
-                    <p style="margin: 0;">Encontrado em: <?php echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]?></p>
-                    <p style="margin: 0;"><?php echo $linha["descricao"];?></p>
+                    <a href="enc_especies.php?esp='<?php echo $linha['especie'];?>'">Saiba mais</a>
                 </div>
             <?php
                     }
@@ -93,15 +91,21 @@
                     <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
                     <p style="margin: 0;"><?php echo $linha["familia"];?></p>
                     <p style="margin: 0;"><?php echo $linha["classe"];?></p>
-                    <p style="margin: 0;"><?php echo $linha["data"]." ".$linha["horario"]?></p>
-                    <p style="margin: 0;">Encontrado em: <?php echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]?></p>
-                    <p style="margin: 0;"><?php echo $linha["descricao"];?></p>
+                    <a href="enc_especies.php?esp='<?php echo $linha['especie'];?>'">Saiba mais</a>
                 </div>
             <?php
                     }
                 }
             ?>
         </section>
+        <a href="crud.php?crud=I">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16" style="border: 3px solid     #F0F7DA; border-radius: 100px; background-color: #F0F7DA; width: 3rem; height: 3rem; color: #325D2F; position: fixed; right: 1rem;  bottom: 1rem;">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+            </svg>
+        </a>
     </main>
 </body>
 </html>
+<?php
+    mysqli_close($conexao);
+?>

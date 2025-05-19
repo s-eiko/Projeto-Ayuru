@@ -2,7 +2,6 @@
 
 * {
     transition: all .5s ease;
-
 }
 
 body,
@@ -33,6 +32,10 @@ nav {
     height: 24px;
     width: 24px;
     color: #F0F7DA;
+}
+
+main {
+    padding: 1rem;
 }
 
 h1 {
