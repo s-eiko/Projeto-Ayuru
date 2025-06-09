@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="scroll-behavior: smooth;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <title>Projeto Ayuru</title>
 </head>
+
 <body>
     <nav>
         <div class="nav-pagina">
-            <a href="inicio.html">
+            <a href="../inicio.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-house-door" viewBox="0 0 16 16">
                     <path
@@ -18,7 +20,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="especies.php">
+            <a href="especies.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bug"
                     viewBox="0 0 16 16">
                     <path
@@ -27,7 +29,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="atropelamentos.php">
+            <a href="../atropelamentos/atropelamentos.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-car-front" viewBox="0 0 16 16">
                     <path
@@ -38,7 +40,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="mapa.php">
+            <a href="../mapa.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -47,7 +49,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="cadastro.php">
+            <a href="../cadastro.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
                     viewBox="0 0 16 16">
                     <path
@@ -57,7 +59,27 @@
         </div>
     </nav>
     <main>
-        <h1>Mapa</h1>
+        <h1>Espécies</h1>
+        <section id="filtros">
+            <div style="background-color: #325D2F; padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                <a href="fauna.php"
+                    style="text-decoration: none; color: #F0F7DA; display: flex; gap: 1rem; align-items: center">
+                    <img width="60%" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Urso_de_%C3%B3culos.jpg"
+                        alt="fauna" style="margin: 0;">
+                    <p style="margin: 0; font-size: 1.5rem; width: 100%;">Fauna</p>
+                </a>
+            </div>
+            <div style="background-color: #325D2F; padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                <a href="flora.php"
+                    style="text-decoration: none; color: #F0F7DA; display: flex; gap: 1rem; align-items: center">
+                    <img width="60%"
+                        src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Maria_sem_vergonha_flor.jpg"
+                        alt="flora" style="margin: 0;">
+                    <p style="margin: 0; font-size: 1.5rem; width: 100%;">Flora</p>
+                </a>
+            </div>
+        </section>
     </main>
 </body>
+
 </html>

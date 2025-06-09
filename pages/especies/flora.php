@@ -1,15 +1,21 @@
+<?php
+    session_start();
+
+    $conexao = mysqli_connect("localhost", "root", "Fukuoka23.", "ayuru") or die("Falha na conexão");
+    $tabela =  mysqli_query($conexao, "SELECT * FROM especies");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Projeto Ayuru</title>
+    <link rel="stylesheet" href="../../style.css">
+    <title>Flora</title>
 </head>
 <body>
     <nav>
         <div class="nav-pagina">
-            <a href="inicio.html">
+            <a href="../inicio.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-house-door" viewBox="0 0 16 16">
                     <path
@@ -18,7 +24,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="especies.php">
+            <a href="especies.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bug"
                     viewBox="0 0 16 16">
                     <path
@@ -27,7 +33,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="atropelamentos.php">
+            <a href="../atropelamentos/atropelamentos.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-car-front" viewBox="0 0 16 16">
                     <path
@@ -38,7 +44,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="mapa.php">
+            <a href="../mapa.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -47,7 +53,7 @@
             </a>
         </div>
         <div class="nav-pagina">
-            <a href="cadastro.php">
+            <a href="../cadastro.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
                     viewBox="0 0 16 16">
                     <path
@@ -57,7 +63,34 @@
         </div>
     </nav>
     <main>
-        <h1>Cadastro</h1>
+        <h1>Flora</h1>
+        <?php
+            while ($linha = mysqli_fetch_array($tabela, MYSQLI_ASSOC)) {
+                if ($linha['tipo'] == 'flora') {
+        ?>
+            <div style="background-color: #325D2F; padding: 1rem; color: #F0F7DA; margin-bottom: 1rem;">
+                <img src="<?php echo "../../images/".$linha["foto"];?>" style="width: 100%;">
+                <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
+                <p style="margin: 0;"><?php echo $linha["familia"];?></p>
+                <p style="margin: 0;"><?php echo $linha["classe"];?></p>
+                <p style="margin: 0;"><?php echo $linha["classificacao"];?></p>
+                <a href="enc_especies.php?esp='<?php echo $linha['especie'];?>'">Ver todas as ocorrências</a>
+            </div>
+        <?php
+                }
+            }
+        ?>
     </main>
+    <?php 
+        if (isset($_SESSION["validado"]) && $_SESSION["validado"] == true) echo
+        "<a href='../../crud.php?acao=P&post=especie'>
+        <svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-plus-circle-fill' viewBox='0 0 16 16' style='border: 3px solid     #F0F7DA; border-radius: 100px; background-color: #F0F7DA; width: 3rem; height: 3rem; color: #325D2F; position: fixed; right: 1rem;  bottom: 1rem;'>
+            <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z'/>
+        </svg>
+        </a>";
+    ?>
 </body>
 </html>
+<?php
+    mysqli_close($conexao);
+?>
