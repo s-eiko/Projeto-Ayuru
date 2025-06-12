@@ -171,7 +171,15 @@
             </tr>
             <tr>
                 <td><label for="foto">Foto: (JPEG, JPG, PNG e WEBP)</label></td>
-                <td><input enctype="multipart/form-data" type="file" name="foto" id="foto" required value="<?php echo "images/".$foto; ?>" <?php if ($acao == "E") echo "readonly"; ?> /></td>
+                <td>
+                    <?php
+                        if ($acao == "E" || $acao == "A") {
+                            echo "<img style='width: 100%' src='images/".$foto."'/>";
+                        } else {
+                            echo "<input enctype='multipart/form-data' type='file' name='foto' id='foto' required ?> />";
+                        }
+                    ?>
+                </td>
             </tr>
             <tr>
                 <td><input type="submit" value="<?php echo $botao; ?>" style="padding: 10px 24px; width: 100%;"></td>

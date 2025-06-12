@@ -169,4 +169,6 @@
 </script>
 <?php
     mysqli_close($conexao);
+
+    header("Location: login.php");
 ?>

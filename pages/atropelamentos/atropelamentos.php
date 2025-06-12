@@ -3,6 +3,16 @@
 
     $conexao = mysqli_connect("localhost", "root", "Fukuoka23.", "ayuru") or die("Falha na conexão");
     $tabela =  mysqli_query($conexao, "SELECT * FROM atropelamentos");
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["clas"])) {
+            $clas = $_POST["clas"];
+            $tabela = mysqli_query($conexao, "SELECT * FROM atropelamentos WHERE classificacao = '$clas'");
+        }
+        if (isset($_POST["nid"])) {
+            $tabela = mysqli_query($conexao, "SELECT * FROM atropelamentos WHERE especie='Não identificado'");
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -64,17 +74,38 @@
     </nav>
     <main>
         <h1>Atropelamentos</h1>
+        <h3 style="text-align: center; color: #e01212;">Atenção: Conteúdo sensível! Para ver as imagens sem censura clique em cima delas</h3>
+        <div class="filtro">
+            <form id="nid" action="atropelamentos.php" method="post">
+                <input style="padding: 7px 16px; margin-bottom: 1rem;" value="Espécies não identificadas" type="text" name="nid" onclick="document.getElementById('nid').submit()" readonly/>
+            </form>
+            <form action="atropelamentos.php" method="post">
+                <select name="clas" id="clas" style="padding: 7px 16px; margin-bottom: 1rem;">
+                    <option value="mamifero">Mamíferos</option>
+                    <option value="anfibio">Anfíbios</option>
+                    <option value="reptil">Répteis</option>
+                    <option value="ave">Aves</option>
+                    <option value="peixe">Peixes</option>
+                    <option value="inseto">Insetos</option>
+                    <option value="outro_fa">Outros</option>
+                </select>
+                <input type="submit" value="Filtrar" style="padding: 7px 16px; margin-bottom: 1rem;">
+            </form>
+        </div>
         <?php
             while ($linha = mysqli_fetch_array($tabela, MYSQLI_ASSOC)) {
+                $id = $linha["id_at"];
         ?>
             <div style="background-color: #325D2F; padding: 1rem; color: #F0F7DA; margin-bottom: 1rem;">
-                <img src="<?php echo "../../images/".$linha["foto"];?>" style="width: 100%;">
+                <img id="foto<?php echo $id?>" src="<?php echo "../../images/".$linha["foto"];?>" style="width: 100%; filter: blur(10px);"
+                    onclick="document.getElementById('foto<?php echo $id?>').style.filter = 'blur(0px)'"
+                >
                 <p style="font-size: 1.5rem; margin: 0;"><?php echo $linha["especie"];?></p>
                 <p style="margin: 0;"><?php echo $linha["familia"];?></p>
                 <p style="margin: 0;"><?php echo $linha["classe"];?></p>
                 <p style="margin: 0;"><?php echo $linha["classificacao"];?></p>
                 <p style="margin: 0;"><?php echo $linha["data"]." ".$linha["hora"]?></p>
-                <p style="margin: 0;">Encontrado em: <?php echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]?></p>
+                <p style="margin: 0;">Encontrado em: <?php if ($linha["endereco"] != "Não possui") echo $linha["endereco"]."; ".$linha["latitude"].", ".$linha["longitude"]; else echo $linha["latitude"].", ".$linha["longitude"];?></p>
                 <p style="margin: 0;"><?php echo $linha["descricao"];?></p>
                 <?php
                     if (isset($_SESSION["validado"]) && $_SESSION["validado"] == true && $linha["usuario"] == $_SESSION["usuario"]) {

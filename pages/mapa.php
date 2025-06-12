@@ -1,11 +1,23 @@
+<?php
+    $conexao = mysqli_connect("localhost", "root", "Fukuoka23.","ayuru") or die ("Falha na conexão");
+
+    $especies = mysqli_query($conexao, "SELECT * FROM enc_especies");
+    $atropelamentos = mysqli_query($conexao, "SELECT * FROM atropelamentos");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <title>Projeto Ayuru</title>
 </head>
+
 <body>
     <nav>
         <div class="nav-pagina">
@@ -58,6 +70,80 @@
     </nav>
     <main>
         <h1>Mapa</h1>
+        <div>
+            <p>
+                <svg color="#347aeb" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                </svg>
+                Espécies
+            </p>
+            <p>
+                <svg color="#e85c64" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                </svg>
+                Atropelamentos
+            </p>
+        </div>
+        <div id="mapa" style="width: 100%; height: 70vh;"></div>
     </main>
 </body>
+
 </html>
+<script>
+    var mapa = L.map(document.getElementById('mapa'), {
+        center: [-23.2306352, -46.9559257],
+        zoom: 12
+    });
+
+    var basemap = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png', { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>' });
+    basemap.addTo(mapa);
+
+    var scale = L.control.scale();
+    scale.addTo(mapa);
+
+    // ---- ICONS ----
+
+    var redIcon = L.icon({
+        iconUrl: '../assets/red-marker.png',
+
+        iconSize:     [50, 50], // size of the icon
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor:  [4, -74] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var blueIcon = L.icon({
+        iconUrl: '../assets/blue-marker.png',
+
+        iconSize:     [50, 50], // size of the icon
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor:  [4, -74] // point from which the popup should open relative to the iconAnchor
+    });
+</script>
+<?php
+    echo "<script>";
+    while ($linha = mysqli_fetch_array($especies, MYSQLI_ASSOC)) {
+        $latitude = $linha["latitude"];
+        $longitude = $linha["longitude"];
+        $especie = $linha["especie"];
+        $data = $linha["data"];
+        $hora = $linha["hora"];
+        echo "
+            var marker = L.marker([".$latitude.", ".$longitude."], { title: '".$especie.", ".$data.", ".$hora."', icon: blueIcon});
+            marker.bindPopup('".$especie.", ".$data.", ".$hora."');
+            marker.addTo(mapa);
+        ";
+    }
+    while ($linha = mysqli_fetch_array($atropelamentos, MYSQLI_ASSOC)) {
+        $latitude = $linha["latitude"];
+        $longitude = $linha["longitude"];
+        $especie = $linha["especie"];
+        $data = $linha["data"];
+        $hora = $linha["hora"];
+        echo "
+            var marker = L.marker([".$latitude.", ".$longitude."], { title: '".$especie.", ".$data.", ".$hora."', icon: redIcon});
+            marker.bindPopup('".$especie.", ".$data.", ".$hora."');
+            marker.addTo(mapa);
+        ";
+    }
+    echo "</script>";
+?>
