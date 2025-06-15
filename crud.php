@@ -61,8 +61,19 @@
             $linha_esp = mysqli_fetch_array($tabela_esp);
 
             $especie = $linha_enc["especie"];
-            $familia = $linha_esp["familia"];
-            $classe = $linha_esp["classe"];
+            
+            if ($especie != "Não identificado") {
+                $familia = $linha_esp["familia"];
+                $classe = $linha_esp["classe"];
+                $classificacao = $linha_esp["classificacao"];
+                $tipo = $linha_esp["tipo"];
+            } else {
+                $familia = "";
+                $classe = "";
+                $classificacao = "";
+                $tipo = "";
+            }
+            
             $endereco = $linha_enc["endereco"];
             $latitude = $linha_enc["latitude"];
             $longitude = $linha_enc["longitude"];
@@ -70,8 +81,6 @@
             $data = $linha_enc["data"];
             $hora = $linha_enc["hora"];
             $foto = $linha_enc["foto"];
-            $classificacao = $linha_esp["classificacao"];
-            $tipo = $linha_esp["tipo"];
         } else {
             $tabela = mysqli_query($conexao, "SELECT * FROM atropelamentos WHERE id_at=$id");
             $linha = mysqli_fetch_array($tabela);
@@ -149,12 +158,12 @@
             </tr>
             <tr>
                 <td><label for="latitude">Latitude: </label></td>
-                <td><input type="number" name="latitude" id="latitude" step="1" minlength="10" maxlength="12" required value="<?php echo $latitude; ?>" <?php if ($acao == "E") echo "readonly"; ?> /></td>
+                <td><input type="number" name="latitude" id="latitude" step="any" required value="<?php echo $latitude; ?>" <?php if ($acao == "E") echo "readonly"; ?> /></td>
                 <td><div><input type="radio" id="loc_lat"><label>Utilizar localização do dispositivo atual</label></div></td>
             </tr>
             <tr>
                 <td><label for="longitude">Longitude: </label></td>
-                <td><input type="number" name="longitude" id="longitude" step="1" minlength="10" maxlength="12" required value="<?php echo $longitude; ?>" <?php if ($acao == "E") echo "readonly"; ?> /></td>
+                <td><input type="number" name="longitude" id="longitude" step="any" required value="<?php echo $longitude; ?>" <?php if ($acao == "E") echo "readonly"; ?> /></td>
                 <td><div><input type="radio" id="loc_long"><label>Utilizar localização do dispositivo atual</label></div></td>
             </tr>
             <tr>

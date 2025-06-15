@@ -83,19 +83,166 @@
                 </svg>
                 Atropelamentos
             </p>
+            <input style="padding: 7px 16px; margin-bottom: 1rem;" value="Ver estatísticas" type="text" id="bt" readonly/>
         </div>
-        <div id="mapa" style="width: 100%; height: 70vh;"></div>
+        <div id="mapa" style="width: 100%; height: 60vh;"></div>
+        <div id="est" style="display: none;">
+            <div>
+                <h2>Quantidade de espécies da fauna por classificacão (%)</h2>
+                    <div>
+                        <p>
+                            <svg color="rgb(249, 65, 68)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Mamíferos
+                        </p>
+                        <p>
+                            <svg color="rgb(243, 114, 44)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Anfíbios
+                        </p>
+                        <p>
+                            <svg color="rgb(248, 150, 30)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Répteis
+                        </p>
+                        <p>
+                            <svg color="rgb(249, 199, 79)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Aves
+                        </p>
+                        <p>
+                            <svg color="rgb(144, 190, 109)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Peixes
+                        </p>
+                        <p>
+                            <svg color="rgb(67, 170, 139)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Insetos
+                        </p>
+                        <p>
+                            <svg color="rgb(87, 117, 144)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Outros
+                        </p>
+                    </div>
+                <img src="../graphs/gr-fauna.php" alt="Gráfico fauna" style="width: 100%; height: auto;">
+            </div>
+            <div>
+                <h2>Quantidade de espécies da flora por classificação (%)</h2>
+                    <div>
+                        <p>
+                            <svg color="rgb(249, 65, 68)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Árvores
+                        </p>
+                        <p>
+                            <svg color="rgb(243, 114, 44)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Arbustos
+                        </p>
+                        <p>
+                            <svg color="rgb(248, 150, 30)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Rasteiras
+                        </p>
+                        <p>
+                            <svg color="rgb(249, 199, 79)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Outros
+                        </p>
+                    </div>
+                <img src="../graphs/gr-flora.php" alt="Gráfico flora" style="width: 100%; height: auto;">
+            </div>
+            <div>
+                <h2>Quantidade de espécies atropeladas por classificacação (%)</h2>
+                    <div>
+                        <p>
+                            <svg color="rgb(249, 65, 68)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Mamíferos
+                        </p>
+                        <p>
+                            <svg color="rgb(243, 114, 44)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Anfíbios
+                        </p>
+                        <p>
+                            <svg color="rgb(248, 150, 30)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Répteis
+                        </p>
+                        <p>
+                            <svg color="rgb(249, 199, 79)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Aves
+                        </p>
+                        <p>
+                            <svg color="rgb(144, 190, 109)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Peixes
+                        </p>
+                        <p>
+                            <svg color="rgb(67, 170, 139)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Insetos
+                        </p>
+                        <p>
+                            <svg color="rgb(87, 117, 144)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Outros
+                        </p>
+                    </div>
+                <img src="../graphs/gr-atropelamento.php" alt="Gráfico atropelamentos" style="width: 100%; height: auto;">
+            </div>
+        </div>
     </main>
 </body>
 
 </html>
 <script>
+    var botao = document.getElementById("bt");
+    var map = document.getElementById("mapa");
+    var est = document.getElementById("est");
+    
+    botao.addEventListener('click', function () {
+        if (botao.value == "Ver estatísticas") {
+            botao.value = "Ver mapa";
+            map.style.display = "none";
+            est.style.display = "block";
+        } else {
+            botao.value = "Ver estatísticas";
+            map.style.display = "block";
+            est.style.display = "none";
+        }
+    })
+
+    // ---- MAPA ----
+
     var mapa = L.map(document.getElementById('mapa'), {
         center: [-23.2306352, -46.9559257],
-        zoom: 12
+        zoom: 13
     });
 
-    var basemap = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png', { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>' });
+    var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {});
     basemap.addTo(mapa);
 
     var scale = L.control.scale();

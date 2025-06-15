@@ -114,6 +114,7 @@
                     <?php
                         if (isset($_SESSION["validado"]) && $_SESSION["validado"] == true && $linha["usuario"] == $_SESSION["usuario"]) {
                     ?>
+                        <a href="../../informar.php?post=especie&id=<?php echo $linha["id_enc"]?>" style="text-align: left;">Você sabe qual é esta espécie? Informe-nos</a>
                         <div style="text-align: right;">
                             <a href='../../crud.php?acao=A&post=especie&id=<?php echo $linha["id_enc"]?>' style="margin-right: .5rem;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"    viewBox="0 0 16 16" style="color: #F0F7DA;">
@@ -126,7 +127,7 @@
                                 </svg>
                             </a>
                         </div>
-                z<?php
+                <?php
                     }
                 ?>
             </div>
