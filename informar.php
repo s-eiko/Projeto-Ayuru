@@ -34,9 +34,9 @@
     </nav>
     <main>
         <h1>Informar espécie</h1>
-        <p>Você reconhece a espécie a seguir? Digite o nome no campo disponível abaixo</p>
-        <img src="images/<?php echo $foto?>" style="display: block; margin: auto; width: 100%;">
-        <form action="informarConfirmar.php?post=<?php echo $post?>&id=<?php echo $id?>" method="post" style="display: flex; flex-direction: column; gap: 1rem; padding: 3rem;">
+        <p id="inf">Você reconhece a espécie a seguir? Digite o nome no campo disponível abaixo</p>
+        <img id="inf_img" src="images/<?php echo $foto?>">
+        <form action="informarConfirmar.php?post=<?php echo $post?>&id=<?php echo $id?>" method="post">
             <tr>
                 <td><input type="text" name="especie" id="especie" maxlength="200" placeholder="Digite o nome da espécie" required/></td>
             </tr>
