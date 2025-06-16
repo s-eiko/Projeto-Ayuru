@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/06/2025 às 20:27
+-- Tempo de geração: 16/06/2025 às 18:19
 -- Versão do servidor: 9.2.0
 -- Versão do PHP: 8.2.12
 
@@ -34,8 +34,8 @@ CREATE TABLE `atropelamentos` (
   `familia` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `classe` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `latitude` int NOT NULL,
-  `longitude` int NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
   `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -49,8 +49,8 @@ CREATE TABLE `atropelamentos` (
 --
 
 INSERT INTO `atropelamentos` (`id_at`, `usuario`, `especie`, `familia`, `classe`, `endereco`, `latitude`, `longitude`, `descricao`, `data`, `hora`, `foto`, `classificacao`, `tipo`) VALUES
-(1, 'gersilva', 'Leopardus wiedii', 'Felídeos', 'Mammalia', 'Não possui', -232177211, -469431103, 'Muito lindo!', '2025-02-18', '18:19', 'Margay.jpg', 'mamifero', 'fauna'),
-(2, 'seiko', 'Eira barbara', 'Mustelídeos', 'Mammalia', '', -232320713, -469184423, 'De língua para fora!', '2025-06-03', '16:27', 'Irara_(Papa-mel).jpg', 'mamifero', 'fauna');
+(1, 'gersilva', 'Leopardus wiedii', 'Felídeos', 'Mammalia', 'Não possui', -23.2177211, -46.9431103, 'Muito lindo!', '2025-02-18', '18:19', 'Margay.jpg', 'mamifero', 'fauna'),
+(2, 'seiko', 'Eira barbara', 'Mustelídeos', 'Mammalia', '', -23.2320713, -46.9184423, 'De língua para fora!', '2025-06-03', '16:27', 'Irara_(Papa-mel).jpg', 'mamifero', 'fauna');
 
 -- --------------------------------------------------------
 
@@ -63,8 +63,8 @@ CREATE TABLE `enc_especies` (
   `usuario` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `especie` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `latitude` int NOT NULL,
-  `longitude` int NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
   `descricao` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -76,11 +76,12 @@ CREATE TABLE `enc_especies` (
 --
 
 INSERT INTO `enc_especies` (`id_enc`, `usuario`, `especie`, `endereco`, `latitude`, `longitude`, `descricao`, `data`, `hora`, `foto`) VALUES
-(1, 'seiko', 'Ambystoma mexicanum', 'Antiguo Canal Cuemanco 3, Pista Olímpica Virgilio Uribe, Xochimilco, 16043 Ciudad de México, CDMX, México', 192847562, -99102319, 'Encontrado na beira do Lago de Xochimilco', '2025-06-11', '17:31', 'axolote1.jpg'),
-(2, 'gersilva', 'Ambystoma mexicanum', 'Antiguo Canal Cuemanco, Pista Olímpica Virgilio Uribe, Xochimilco, 16034 Ciudad de México, CDMX, México', 19287967, -991019287, 'Primeira vez vendo essa espécie!', '2025-05-07', '16:45', 'axolote2.jpg'),
-(3, 'gersilva', 'Nasua nasua', 'Não possui', -232370142, -469733321, 'Encontrei uma família deles enquanto pesquisava', '2025-03-16', '16:52', 'quati.jpg'),
-(4, 'seiko', 'Bauhinia forficata', 'Av. Luiz José Sereno - Serra do Japi, Jundiaí - SP', -232321955, -46956896, 'Já estava florescendo!', '2025-05-20', '18:15', 'pata-de-vaca.jpg'),
-(5, 'gersilva', 'Croton floribundus', 'Av. Manoel Teixeira Cabral - Aglomeração Urbana de Jundiaí, Jundiaí - SP, 13211-224', -232177211, -469431103, 'Esta era bem grande!', '2025-06-19', '17:13', 'capixingui.jpg');
+(1, 'seiko', 'Ambystoma mexicanum', 'Antiguo Canal Cuemanco 3, Pista Olímpica Virgilio Uribe, Xochimilco, 16043 Ciudad de México, CDMX, México', 19.2847562, -99.102319, 'Encontrado na beira do Lago de Xochimilco', '2025-06-11', '17:31', 'axolote1.jpg'),
+(2, 'gersilva', 'Ambystoma mexicanum', 'Antiguo Canal Cuemanco, Pista Olímpica Virgilio Uribe, Xochimilco, 16034 Ciudad de México, CDMX, México', 19.287967, -99.1019287, 'Primeira vez vendo essa espécie!', '2025-05-07', '16:45', 'axolote2.jpg'),
+(3, 'gersilva', 'Nasua nasua', 'Não possui', -23.2370142, -46.9733321, 'Encontrei uma família deles enquanto pesquisava', '2025-03-16', '16:52', 'quati.jpg'),
+(4, 'seiko', 'Bauhinia forficata', 'Av. Luiz José Sereno - Serra do Japi, Jundiaí - SP', -23.2321955, -46.956896, 'Já estava florescendo!', '1995-03-23', '00:20', 'pata-de-vaca.jpg'),
+(5, 'gersilva', 'Croton floribundus', 'Av. Manoel Teixeira Cabral - Aglomeração Urbana de Jundiaí, Jundiaí - SP, 13211-224', -23.2177211, -46.9431103, 'Esta era bem grande!', '2025-06-19', '17:13', 'capixingui.jpg'),
+(6, 'seiko', 'Não identificado', 'Não possui', -23.2306352, -23.2306352, 'Estava andando por ai!', '2025-06-03', '17:28', 'Cerdocyon_thous,_Transpantaneira.jpg');
 
 -- --------------------------------------------------------
 
@@ -106,6 +107,28 @@ INSERT INTO `especies` (`especie`, `familia`, `classe`, `tipo`, `foto`, `classif
 ('Bauhinia forficata', 'Fabaceae', 'Magnoliopsida', 'flora', 'pata-de-vaca.jpg', 'arvore'),
 ('Croton floribundus', 'Euphorbiaceae', 'Magnoliopsida', 'flora', 'capixingui.jpg', 'arvore'),
 ('Nasua nasua', 'Procionídeos', 'Mammalia', 'fauna', 'quati.jpg', 'mamifero');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `sugestoes`
+--
+
+CREATE TABLE `sugestoes` (
+  `post` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `especie` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `sugestoes`
+--
+
+INSERT INTO `sugestoes` (`post`, `id`, `especie`) VALUES
+('especie', 6, 'Cerdocyon thous'),
+('especie', 6, 'Cerdocyon thous'),
+('especie', 6, 'Cerdocyon thous'),
+('especie', 6, 'Cerdocyon thous');
 
 -- --------------------------------------------------------
 
@@ -180,7 +203,7 @@ ALTER TABLE `atropelamentos`
 -- AUTO_INCREMENT de tabela `enc_especies`
 --
 ALTER TABLE `enc_especies`
-  MODIFY `id_enc` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_enc` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
