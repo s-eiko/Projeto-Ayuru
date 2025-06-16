@@ -123,7 +123,7 @@
                             $id = $linha["id_at"];
 
                             echo `
-                                <a href="../../informar.php?post=especie&id=<?php echo $id?>" style="text-align: left;">Você sabe qual é esta espécie? Informe-nos</a>
+                                <a href="../../informar.php?post=especie&id=<?php echo $id?>" style="text-align: left; color: #F0F7DA;">Você sabe qual é esta espécie? Informe-nos</a>
                             `;
                         }?>
                         <a href='../../crud.php?acao=A&post=atropelamento&id=<?php echo $linha["id_at"]?>' style="margin-right: .5rem;">

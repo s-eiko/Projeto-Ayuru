@@ -16,7 +16,7 @@
     $ocorrencias = mysqli_query($conexao, "SELECT * FROM sugestoes WHERE post='$post' AND id='$id' AND especie='$especie'");
     $qtde_linhas = mysqli_num_rows($ocorrencias);
 
-    if ($qtde_linhas > 5) {
+    if ($qtde_linhas >= 5) {
         if ($post = "especie") {
             $tabela = mysqli_query($conexao, "SELECT * FROM enc_especies WHERE id_enc = $id");
             $linha = mysqli_fetch_array($tabela);
